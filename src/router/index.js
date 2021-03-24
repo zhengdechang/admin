@@ -8,6 +8,10 @@ import AdminUserEdit from "../views/AdminUserEdit";
 import AdminUserList from "../views/AdminUserList";
 import Login from "../views/Login";
 import UserList from "../views/UserList";
+import CommentEdit from "../views/CommentEdit";
+import SongCommentList from "../views/SongCommentList";
+import MvCommentList from "../views/MvCommentList";
+import CollectionCommentList from "../views/CollectionCommentList";
 
 Vue.use(VueRouter)
 
@@ -32,23 +36,28 @@ const routes = [
     name: '/main',
     component: Main,
     children:[
-      {
-        path:'/users/create',
-        component: UserEdit,
-      },
-      {
-        path:'/users/list',
-        component: UserList,
-      },
-      {
-        path:'/users/edit/:id',
-        component: UserEdit,
-        props:true
-      },
-
+        //用户
+      { path:'/users/create',component: UserEdit,},
+      { path:'/users/edit/:id', component: UserEdit, props:true},
+      { path:'/users/list', component: UserList,},
+        //管理员
       {  path: '/admin_users/create',component: AdminUserEdit},
       {  path: '/admin_users/edit/:id',component: AdminUserEdit,props:true},
       {  path: '/admin_users/list',component: AdminUserList},
+
+        //评论管理
+      {  path: '/comment/edit/',component: CommentEdit},
+      {  path: '/comment/song/list',component: SongCommentList},
+      {  path: '/comment/mv/list',component: MvCommentList},
+      {  path: '/comment/collection/list',component: CollectionCommentList},
+      // {  path: '/comment/collection/list',component: AdminUserList},
+        //收藏管理
+      {  path: '/comment/create',component: AdminUserEdit},
+      {  path: '/liked/edit/:id',component: AdminUserEdit,props:true},
+      {  path: '/liked/song/list',component: AdminUserList},
+      {  path: '/liked/album/list',component: AdminUserList},
+      {  path: '/liked/artist/list',component: AdminUserList},
+      {  path: '/liked/collection/list',component: AdminUserList},
     ]
   },
 ]
