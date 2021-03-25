@@ -12,6 +12,11 @@ import CommentEdit from "../views/CommentEdit";
 import SongCommentList from "../views/SongCommentList";
 import MvCommentList from "../views/MvCommentList";
 import CollectionCommentList from "../views/CollectionCommentList";
+import LikedSongList from "../views/liked/LikedSongList";
+import LikedAlbumList from "../views/liked/LikedAlbumList";
+import LikedArtistList from "../views/liked/LikedArtistList";
+import LikedCollectionList from "../views/liked/LikedCollectionList";
+import LikedEdit from "../views/liked/LikedEdit";
 
 Vue.use(VueRouter)
 
@@ -52,12 +57,11 @@ const routes = [
       {  path: '/comment/collection/list',component: CollectionCommentList},
       // {  path: '/comment/collection/list',component: AdminUserList},
         //收藏管理
-      {  path: '/comment/create',component: AdminUserEdit},
-      {  path: '/liked/edit/:id',component: AdminUserEdit,props:true},
-      {  path: '/liked/song/list',component: AdminUserList},
-      {  path: '/liked/album/list',component: AdminUserList},
-      {  path: '/liked/artist/list',component: AdminUserList},
-      {  path: '/liked/collection/list',component: AdminUserList},
+      {  path: '/liked/edit/',component: LikedEdit},
+      {  path: '/liked/song/list',component: LikedSongList},
+      {  path: '/liked/album/list',component: LikedAlbumList},
+      {  path: '/liked/artist/list',component: LikedArtistList},
+      {  path: '/liked/collection/list',component: LikedCollectionList},
     ]
   },
 ]

@@ -23,10 +23,10 @@
                     <template slot="title"><i class="el-icon-collection"></i>收藏管理</template>
                     <el-menu-item-group>
                         <template slot="title">分类</template>
-                        <el-menu-item index="">歌曲收藏</el-menu-item>
-                        <el-menu-item index="">歌单收藏</el-menu-item>
-                        <el-menu-item index="">歌手收藏</el-menu-item>
-                        <el-menu-item index="">专辑收藏</el-menu-item>
+                        <el-menu-item index="/liked/song/list">歌曲收藏</el-menu-item>
+                        <el-menu-item index="/liked/album/list">歌单收藏</el-menu-item>
+                        <el-menu-item index="/liked/artist/list">歌手收藏</el-menu-item>
+                        <el-menu-item index="/liked/collection/list">专辑收藏</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="4">
