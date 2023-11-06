@@ -1,21 +1,22 @@
-# 使用官方的 Node.js 16 镜像作为基础镜像
-FROM node:16 AS build
+FROM node:16 
 
-# 设置工作目录
 WORKDIR /app
 
-# 复制 package.json 和 package-lock.json 文件以减少构建时间
-COPY package*.json ./
-
-# 安装项目依赖
-RUN npm install
-
-# 复制项目文件到工作目录
 COPY . .
 
-# 构建 Vue.js 项目
-RUN npm run serve
+RUN npm config set registry http://registry.npm.taobao.org/
 
-# 暴露端口（Nginx 默认端口是80）
-EXPOSE 8080
+RUN npm install
 
+RUN npm run build
+
+
+FROM nginx:stable-alpine
+
+COPY dist /usr/share/nginx/html
+
+COPY app.conf /etc/nginx/conf.d/app.conf
+
+EXPOSE 8081
+
+CMD ["nginx", "-g", "daemon off;"]
