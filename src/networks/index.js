@@ -4,29 +4,29 @@ import router from "../router";
 
 
 const http = axios.create({
-    baseURL:'http://localhost:3001/admin/api'
+    baseURL: '/admin/api'
 })
 
 http.interceptors.request.use(function (config) {
-    if(sessionStorage.token){
-        config.headers.Authorization = 'Bearer ' +sessionStorage.token
+    if (sessionStorage.token) {
+        config.headers.Authorization = 'Bearer ' + sessionStorage.token
     }
     return config
-},function (error) {
+}, function (error) {
     return Promise.reject(error)
 
 })
 
 
-http.interceptors.response.use(res =>{
+http.interceptors.response.use(res => {
     return res
-},err =>{
-    if(err.response.data.message){
+}, err => {
+    if (err.response.data.message) {
         Vue.prototype.$message({
-            type:'err',
-            message:err.response.data.message
+            type: 'err',
+            message: err.response.data.message
         })
-        if(err.response.status === 401){
+        if (err.response.status === 401) {
             router.push('/login')
         }
     }
